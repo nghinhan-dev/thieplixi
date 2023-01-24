@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.envelope {
+  display: flex;
+  justify-content: center;
+}
+.envelope .rectangle {
+  margin: 10px;
+  box-shadow: 0px 0px 10px black;
+  height: 735px;
+  width: 405px;
+  position: relative;
+  background-color: #c9151e;
+  overflow: hidden;
+}
+.envelope .rectangle .flowers i {
+  height: 15px;
+  width: 15px;
+  background-color: black;
+}
+.envelope .rectangle .gift-for {
+  position: relative;
+  background-color: #c9151e;
+  border-radius: 0% 0% 50% 50%;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+  height: 155px;
+  width: 100%;
+}
+.envelope .rectangle .circle {
+  position: absolute;
+  background-color: #ffe551;
+  height: 176px;
+  width: 176px;
+  top: 135px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 50%;
+  border-right: 5px solid #c9151e;
+  border-left: 5px solid #c9151e;
+  border-bottom: 5px solid #c9151e;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+}
+.envelope .rectangle .circle::after {
+  content: "";
+  position: absolute;
+  height: 215px;
+  width: 215px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: url("../img/xixi.png") center center no-repeat;
+  background-size: 100% 100%;
+}
+.envelope .rectangle .chi-quote {
+  margin-top: 125px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.envelope .rectangle .chi-quote .dott {
+  background-color: white;
+  height: 10px;
+  width: 10px;
+  line-height: 10px;
+  border-radius: 50%;
+  margin: 5px 0px;
+}
+.envelope .rectangle .chi-quote h1 {
+  font-family: "Ma Shan Zheng", cursive;
+  font-size: 60px;
+}
+.envelope .rectangle .year {
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 250px;
+  background-color: #ffe551;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.envelope .rectangle .year img {
+  position: absolute;
+  top: -7px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=style.css.map */
