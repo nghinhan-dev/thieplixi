@@ -1,4 +1,5 @@
 @use "animate";
+@use "wish";
 @import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap");
 
@@ -17,7 +18,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  // height: 700px;
 }
 
 .envelope {
