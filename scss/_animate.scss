@@ -1,0 +1,27 @@
+@keyframes flipOutY {
+  0% {
+    transform: perspective(3000px) rotateY(0deg);
+    // transform-origin: right;
+    opacity: 1;
+  }
+
+  100% {
+    transform: perspective(3000px) rotateY(60deg);
+    // transform-origin: right;
+    opacity: 0;
+  }
+}
+
+@keyframes flipInY {
+  0% {
+    transform: perspective(3000px) rotateY(-60deg);
+    // transform-origin: left;
+    opacity: 0;
+  }
+
+  100% {
+    transform: perspective(3000px) rotateY(0deg);
+    // transform-origin: left;
+    opacity: 1;
+  }
+}

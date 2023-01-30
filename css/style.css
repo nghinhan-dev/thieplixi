@@ -1,4 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap");
+@-webkit-keyframes flipOutY {
+  0% {
+    transform: perspective(3000px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(3000px) rotateY(60deg);
+    opacity: 0;
+  }
+}
+@keyframes flipOutY {
+  0% {
+    transform: perspective(3000px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(3000px) rotateY(60deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes flipInY {
+  0% {
+    transform: perspective(3000px) rotateY(-60deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(3000px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+@keyframes flipInY {
+  0% {
+    transform: perspective(3000px) rotateY(-60deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(3000px) rotateY(0deg);
+    opacity: 1;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -10,28 +51,44 @@
   margin: 0 auto;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .envelope {
   display: flex;
   justify-content: center;
+  position: relative;
 }
-.envelope .rectangle {
+.envelope .rectangle-back {
+  opacity: 0;
   margin: 10px;
   box-shadow: 0px 0px 10px black;
-  height: 735px;
-  width: 405px;
+  height: 635px;
+  width: 355px;
   position: relative;
   background-color: #c9151e;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
-.envelope .rectangle .gift-for {
+.envelope .rectangle-back .gift-for {
   position: relative;
   background-color: #c9151e;
   border-radius: 0% 0% 50% 50%;
   box-shadow: 0 5px rgba(0, 0, 0, 0.5);
   height: 155px;
   width: 100%;
+  transform-origin: top;
+  transition: 3000ms;
 }
-.envelope .rectangle .circle {
+.envelope .rectangle-back .gift-for:hover {
+  transform: rotateX(180deg);
+}
+.envelope .rectangle-back .gift-for .circle {
   position: absolute;
   background-color: #ffe551;
   height: 176px;
@@ -44,8 +101,9 @@
   border-left: 5px solid #c9151e;
   border-bottom: 5px solid #c9151e;
   box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
-.envelope .rectangle .circle::after {
+.envelope .rectangle-back .gift-for .circle::after {
   content: "";
   position: absolute;
   height: 215px;
@@ -56,7 +114,7 @@
   background: url("../img/xixi.png") center center no-repeat;
   background-size: 100% 100%;
 }
-.envelope .rectangle .chi-quote {
+.envelope .rectangle-back .chi-quote {
   margin-top: 125px;
   color: white;
   display: flex;
@@ -65,7 +123,7 @@
   align-items: center;
   text-align: center;
 }
-.envelope .rectangle .chi-quote .dott {
+.envelope .rectangle-back .chi-quote .dott {
   background-color: white;
   height: 10px;
   width: 10px;
@@ -73,11 +131,11 @@
   border-radius: 50%;
   margin: 5px 0px;
 }
-.envelope .rectangle .chi-quote h1 {
+.envelope .rectangle-back .chi-quote h1 {
   font-family: "Ma Shan Zheng", cursive;
-  font-size: 60px;
+  font-size: 35px;
 }
-.envelope .rectangle .year {
+.envelope .rectangle-back .year {
   position: absolute;
   bottom: -150px;
   left: 50%;
@@ -89,10 +147,74 @@
   display: flex;
   justify-content: center;
 }
-.envelope .rectangle .year img {
+.envelope .rectangle-back .year img {
   position: absolute;
   top: -7px;
   height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.envelope .rectangle-front {
+  overflow: hidden;
+  opacity: 1;
+  position: absolute;
+  z-index: 1;
+  margin: 10px;
+  box-shadow: 0px 0px 10px black;
+  height: 635px;
+  width: 355px;
+  background-color: #c9151e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.envelope .rectangle-front .sent {
+  color: #ffe551;
+  font-size: 60px;
+  text-align: center;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5), 0 0 20px #fff, 0 0 10px #ffe551, 0 0 50px #ffe551;
+  font-family: "Ballet", cursive;
+}
+.envelope .rectangle-front .corner svg {
+  width: 125px;
+  height: 125px;
+  /* transform: rotate(90deg); */
+}
+.envelope .rectangle-front .corner g {
+  fill: #ffe551;
+  transform: translate(0px, 131px) scale(0.01, -0.01);
+}
+.envelope .rectangle-front .top-left {
+  position: absolute;
+  top: -13px;
+  left: -5px;
+  transform: rotate(90deg);
+}
+.envelope .rectangle-front .top-right {
+  position: absolute;
+  top: -13px;
+  right: -5px;
+  transform: rotate(90deg) rotateX(180deg);
+}
+.envelope .rectangle-front .bottom-left {
+  position: absolute;
+  bottom: -6px;
+  left: -13px;
+}
+.envelope .rectangle-front .bottom-right {
+  position: absolute;
+  bottom: -6px;
+  right: -13px;
+  transform: rotateY(180deg);
+}
+.envelope:hover .rectangle-front {
+  -webkit-animation: flipOutY 5s ease;
+          animation: flipOutY 5s ease;
+  opacity: 0;
+}
+.envelope:hover .rectangle-back {
+  -webkit-animation: flipInY 5s ease;
+          animation: flipInY 5s ease;
+  opacity: 1;
+  z-index: 2;
 }/*# sourceMappingURL=style.css.map */
